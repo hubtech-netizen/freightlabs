@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Beaker } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
 
@@ -41,14 +41,12 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-blue to-brand-blue-hover flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-brand-blue/20">
-              <Beaker className="w-6 h-6 text-white" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">FreightLabs</span>
-              <span className="text-xs text-muted-foreground -mt-1">The Science of Freight</span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src="/freightlabs-no_background.png"
+              alt="FreightLabs Logo"
+              className="h-12 w-auto group-hover:scale-105 transition-transform"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

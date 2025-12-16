@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Linkedin, Twitter, Beaker, Mail } from 'lucide-react';
+import { Linkedin, Twitter, Mail } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -7,11 +7,12 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-blue-hover flex items-center justify-center">
-                <Beaker className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-bold text-foreground">FreightLabs</span>
+            <div className="mb-4">
+              <img
+                src="/freightlabs-no_background.png"
+                alt="FreightLabs Logo"
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               The Science of Moving Freight. Building the most trusted, intelligent logistics ecosystem.
