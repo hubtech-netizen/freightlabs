@@ -761,7 +761,7 @@ export function Home() {
                 </div>
                 <div className="mt-6 pt-6 border-t border-white/20 text-center">
                   <Link to="/about">
-                    <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-6 py-3 rounded-xl">
+                    <Button className="bg-white text-brand-navy hover:bg-blue-50 px-6 py-3 rounded-xl border-2 border-white shadow-md">
                       Meet the Team
                     </Button>
                   </Link>

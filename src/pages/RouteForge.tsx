@@ -395,7 +395,7 @@ export function RouteForge() {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl">
+                <Button className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl border-2 border-white shadow-lg">
                   Contact Us
                 </Button>
               </Link>

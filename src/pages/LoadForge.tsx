@@ -445,7 +445,7 @@ export function LoadForge() {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl">
+                <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl border-2 border-white shadow-lg">
                   Contact Sales
                 </Button>
               </Link>

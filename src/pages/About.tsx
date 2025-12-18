@@ -343,7 +343,7 @@ export function About() {
                     </Button>
                   </Link>
                   <Link to="/routeforge">
-                    <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl">
+                    <Button className="bg-white text-brand-navy hover:bg-blue-50 px-8 py-6 text-lg rounded-xl border-2 border-white shadow-lg">
                       View Products
                     </Button>
                   </Link>
