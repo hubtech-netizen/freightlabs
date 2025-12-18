@@ -6,11 +6,13 @@ interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  id?: string;
 }
 
-export function AnimatedSection({ children, className = '', delay = 0 }: AnimatedSectionProps) {
+export function AnimatedSection({ children, className = '', delay = 0, id }: AnimatedSectionProps) {
   return (
     <motion.section
+      id={id}
       className={`content-visibility-auto ${className}`}
       initial="hidden"
       whileInView="visible"
