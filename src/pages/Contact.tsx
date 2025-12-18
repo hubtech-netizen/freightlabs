@@ -19,8 +19,10 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
+import { ContactModal } from '@/components/shared/ContactModal';
 
 export function Contact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -379,14 +381,24 @@ export function Contact() {
             <p className="text-lg text-white/80 mb-8">
               Book a personalized walkthrough of our platform with one of our logistics experts.
             </p>
-            <a href="#contact-form" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-              <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg">
-                Request Platform Demo
-              </Button>
-            </a>
+            <Button
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+              className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+            >
+              Schedule Platform Demo
+            </Button>
           </motion.div>
         </div>
       </section>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultInterest="general"
+        source="contact_page_demo_cta"
+      />
     </div>
   );
 }

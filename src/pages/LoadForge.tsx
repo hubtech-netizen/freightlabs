@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -25,8 +26,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
+import { ContactModal } from '@/components/shared/ContactModal';
 
 export function LoadForge() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState('loadforge_page');
   return (
     <div className="min-h-screen">
       <section className="relative min-h-screen bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
@@ -79,12 +83,16 @@ export function LoadForge() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
-                  <Button className="bg-gradient-to-r from-brand-blue to-brand-blue-hover hover:from-brand-blue-hover hover:to-blue-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-brand-blue/20 hover:shadow-xl transition-all group">
-                    Request Platform Demo
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                <Button
+                  onClick={() => {
+                    setModalSource('loadforge_hero');
+                    setIsModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-brand-blue to-brand-blue-hover hover:from-brand-blue-hover hover:to-blue-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-brand-blue/20 hover:shadow-xl transition-all group"
+                >
+                  Request LoadForge Demo
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
                 <a href="#features">
                   <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-brand-blue/20 hover:bg-brand-azure dark:hover:bg-brand-navy-light transition-all">
                     View Features
@@ -438,21 +446,32 @@ export function LoadForge() {
               Join the network of shippers and 3PLs using LoadForge to streamline their operations.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact">
-                <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
-                  Access LoadForge
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => {
+                  setModalSource('loadforge_bottom_cta');
+                  setIsModalOpen(true);
+                }}
+                className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group"
+              >
+                Get Started with LoadForge
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <Link to="/contact">
                 <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl border-2 border-white shadow-lg">
-                  Contact Sales
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultInterest="loadforge"
+        source={modalSource}
+      />
     </div>
   );
 }

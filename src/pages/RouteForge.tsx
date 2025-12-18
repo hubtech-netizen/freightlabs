@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -25,8 +26,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
+import { ContactModal } from '@/components/shared/ContactModal';
 
 export function RouteForge() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState('routeforge_page');
   const steps = [
     {
       step: '01',
@@ -131,15 +135,19 @@ export function RouteForge() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
-                  <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-green-500/20 hover:shadow-xl transition-all group">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                <Button
+                  onClick={() => {
+                    setModalSource('routeforge_hero');
+                    setIsModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-green-500/20 hover:shadow-xl transition-all group"
+                >
+                  Request RouteForge Demo
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
                 <Link to="/contact">
                   <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-950/30 transition-all">
-                    Watch Demo
+                    Talk to Sales
                   </Button>
                 </Link>
               </div>
@@ -388,21 +396,32 @@ export function RouteForge() {
               Join the carrier network using RouteForge to maximize revenue and minimize empty miles.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact">
-                <Button className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
-                  Join the Carrier Network
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <Button
+                onClick={() => {
+                  setModalSource('routeforge_bottom_cta');
+                  setIsModalOpen(true);
+                }}
+                className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group"
+              >
+                Get Started with RouteForge
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <Link to="/contact">
                 <Button className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl border-2 border-white shadow-lg">
-                  Contact Us
+                  Contact Sales Team
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultInterest="routeforge"
+        source={modalSource}
+      />
     </div>
   );
 }

@@ -1,0 +1,318 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Send, CheckCircle2, Loader2, Truck, Package, Building2, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card } from '@/components/ui/card';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+
+interface ContactModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  defaultInterest?: 'routeforge' | 'loadforge' | 'both' | 'general';
+  source?: string;
+}
+
+export function ContactModal({ isOpen, onClose, defaultInterest = 'general', source = 'unknown' }: ContactModalProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    user_type: '',
+    interest: defaultInterest,
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  const userTypes = [
+    { value: 'carrier', label: 'Carrier', icon: Truck, color: 'green' },
+    { value: 'shipper', label: 'Shipper', icon: Package, color: 'blue' },
+    { value: '3pl', label: '3PL/Broker', icon: Building2, color: 'amber' },
+    { value: 'other', label: 'Other', icon: Users, color: 'gray' },
+  ];
+
+  const interests = [
+    { value: 'routeforge', label: 'RouteForge™ (Carriers)', description: 'AI-powered route planning' },
+    { value: 'loadforge', label: 'LoadForge™ (Shippers)', description: 'Smart capacity sourcing' },
+    { value: 'both', label: 'Both Products', description: 'Complete platform access' },
+    { value: 'general', label: 'General Inquiry', description: 'Learn more about FreightLabs' },
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      const { error: submitError } = await supabase.from('leads').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone || null,
+          user_type: formData.user_type,
+          interest: formData.interest,
+          message: formData.message || null,
+          source,
+          status: 'new',
+        },
+      ]);
+
+      if (submitError) throw submitError;
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        onClose();
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            company: '',
+            phone: '',
+            user_type: '',
+            interest: defaultInterest,
+            message: '',
+          });
+        }, 500);
+      }, 2500);
+    } catch (err) {
+      setError('Failed to submit. Please try again or contact us directly.');
+      console.error('Submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+          />
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', duration: 0.5 }}
+              className="pointer-events-auto w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            >
+              <Card className="relative bg-card border-2 shadow-2xl">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onClose}
+                  className="absolute top-4 right-4 z-10 hover:bg-accent rounded-full"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+
+                <div className="p-8">
+                  {isSubmitted ? (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center py-12"
+                    >
+                      <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 className="w-10 h-10 text-green-600" />
+                      </div>
+                      <h3 className="text-3xl font-bold mb-3">Thank You!</h3>
+                      <p className="text-lg text-muted-foreground mb-2">Your request has been received.</p>
+                      <p className="text-sm text-muted-foreground">
+                        Our team will reach out to you within 24 hours.
+                      </p>
+                    </motion.div>
+                  ) : (
+                    <>
+                      <div className="mb-8">
+                        <h2 className="text-3xl font-bold mb-2">Get Started with FreightLabs</h2>
+                        <p className="text-muted-foreground">
+                          Fill out the form below and our team will reach out to schedule a personalized demo.
+                        </p>
+                      </div>
+
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="modal-name">Full Name *</Label>
+                            <Input
+                              id="modal-name"
+                              required
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              placeholder="John Doe"
+                              className="h-12"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="modal-email">Email Address *</Label>
+                            <Input
+                              id="modal-email"
+                              type="email"
+                              required
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              placeholder="john@company.com"
+                              className="h-12"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="modal-company">Company Name *</Label>
+                            <Input
+                              id="modal-company"
+                              required
+                              value={formData.company}
+                              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                              placeholder="ABC Logistics"
+                              className="h-12"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="modal-phone">Phone Number</Label>
+                            <Input
+                              id="modal-phone"
+                              type="tel"
+                              value={formData.phone}
+                              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              placeholder="+1 (555) 000-0000"
+                              className="h-12"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label>I am a: *</Label>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {userTypes.map((type) => (
+                              <button
+                                key={type.value}
+                                type="button"
+                                onClick={() => setFormData({ ...formData, user_type: type.value })}
+                                className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 hover:scale-105 ${
+                                  formData.user_type === type.value
+                                    ? `border-${type.color}-500 bg-${type.color}-50 dark:bg-${type.color}-950/30`
+                                    : 'border-border hover:border-accent'
+                                }`}
+                              >
+                                <type.icon
+                                  className={`w-6 h-6 ${
+                                    formData.user_type === type.value
+                                      ? `text-${type.color}-600`
+                                      : 'text-muted-foreground'
+                                  }`}
+                                />
+                                <span
+                                  className={`text-sm font-medium ${
+                                    formData.user_type === type.value
+                                      ? `text-${type.color}-700 dark:text-${type.color}-400`
+                                      : 'text-muted-foreground'
+                                  }`}
+                                >
+                                  {type.label}
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label>I'm interested in: *</Label>
+                          <div className="grid md:grid-cols-2 gap-3">
+                            {interests.map((interest) => (
+                              <button
+                                key={interest.value}
+                                type="button"
+                                onClick={() => setFormData({ ...formData, interest: interest.value })}
+                                className={`p-4 rounded-xl border-2 transition-all text-left hover:scale-[1.02] ${
+                                  formData.interest === interest.value
+                                    ? 'border-brand-blue bg-brand-azure dark:bg-brand-navy-light'
+                                    : 'border-border hover:border-brand-blue/50'
+                                }`}
+                              >
+                                <p
+                                  className={`font-semibold mb-1 ${
+                                    formData.interest === interest.value
+                                      ? 'text-brand-blue'
+                                      : 'text-foreground'
+                                  }`}
+                                >
+                                  {interest.label}
+                                </p>
+                                <p className="text-xs text-muted-foreground">{interest.description}</p>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="modal-message">Additional Details</Label>
+                          <textarea
+                            id="modal-message"
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                            placeholder="Tell us about your fleet size, volume, or any specific questions..."
+                            rows={4}
+                            className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent"
+                          />
+                        </div>
+
+                        {error && (
+                          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+                            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                          </div>
+                        )}
+
+                        <Button
+                          type="submit"
+                          disabled={isSubmitting || !formData.user_type}
+                          className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                              Submitting...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="mr-2 w-5 h-5" />
+                              Request Demo
+                            </>
+                          )}
+                        </Button>
+
+                        <p className="text-xs text-center text-muted-foreground">
+                          By submitting this form, you agree to be contacted by our team about FreightLabs services.
+                        </p>
+                      </form>
+                    </>
+                  )}
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}

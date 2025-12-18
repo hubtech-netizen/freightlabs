@@ -1,12 +1,13 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { withGPU } from '@/lib/animation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { getCardClasses } from '@/lib/card-styles';
 import { AnimatedSection } from '@/components/shared/AnimatedSection';
 import { AnimatedHeading } from '@/components/shared/AnimatedHeading';
 import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
+import { ContactModal } from '@/components/shared/ContactModal';
 import { staggeredRevealVariants, fluidRevealTransition, revealViewport, getStaggerDelay } from '@/lib/animation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -42,6 +43,9 @@ export function Home() {
   const { theme } = useTheme();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { scrollYProgress } = useScroll();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState('homepage');
+  const [modalInterest, setModalInterest] = useState<'routeforge' | 'loadforge' | 'both' | 'general'>('general');
 
   useEffect(() => {
     cardRefs.current.forEach((card, index) => {
@@ -165,16 +169,25 @@ export function Home() {
                 variants={staggeredRevealVariants}
                 transition={{ ...fluidRevealTransition, delay: 0.6 }}
               >
-                <Button className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
-                  Access the Platform
+                <Button
+                  onClick={() => {
+                    setModalSource('homepage_hero');
+                    setModalInterest('general');
+                    setIsModalOpen(true);
+                  }}
+                  className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group"
+                >
+                  Request Platform Demo
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button
-                  variant="outline"
-                  className="px-8 py-6 text-lg rounded-xl border-2 hover:bg-accent transition-all"
-                >
-                  View Our Capabilities
-                </Button>
+                <Link to="/about">
+                  <Button
+                    variant="outline"
+                    className="px-8 py-6 text-lg rounded-xl border-2 hover:bg-accent transition-all"
+                  >
+                    Learn About Us
+                  </Button>
+                </Link>
               </motion.div>
 
               <motion.div
@@ -387,9 +400,9 @@ export function Home() {
                 </div>
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground mb-3">Your Tool:</p>
-                  <Link to="/lanemaker">
+                  <Link to="/loadforge">
                     <Button className="w-full bg-gradient-to-r from-brand-blue to-brand-blue-hover hover:from-brand-blue-hover hover:to-blue-700 text-white group/btn">
-                      Find Capacity Now
+                      Explore LoadForge
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
@@ -449,9 +462,9 @@ export function Home() {
                 </div>
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground mb-3">Your Tool:</p>
-                  <Link to="/lanemaker">
+                  <Link to="/loadforge">
                     <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white group/btn">
-                      Scale My Operations
+                      Explore LoadForge
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
@@ -652,12 +665,23 @@ export function Home() {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/lanemaker">
+                  <Link to="/loadforge">
                     <Button className="bg-gradient-to-r from-brand-blue to-brand-blue-hover hover:from-brand-blue-hover hover:to-blue-700 text-white px-6 py-5 rounded-xl group">
-                      See LoadForge Features
+                      Explore LoadForge
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
+                  <Button
+                    onClick={() => {
+                      setModalSource('homepage_loadforge_section');
+                      setModalInterest('loadforge');
+                      setIsModalOpen(true);
+                    }}
+                    variant="outline"
+                    className="px-6 py-5 rounded-xl border-2 hover:bg-brand-azure dark:hover:bg-brand-navy-light transition-all"
+                  >
+                    Request Demo
+                  </Button>
                 </div>
               </motion.div>
             </div>
@@ -786,14 +810,28 @@ export function Home() {
             <p className="text-xl text-white/80 mb-8">
               Join the ecosystem of shippers and carriers using AI-powered freight matching
             </p>
-            <Button className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
+            <Button
+              onClick={() => {
+                setModalSource('homepage_bottom_cta');
+                setModalInterest('both');
+                setIsModalOpen(true);
+              }}
+              className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group"
+            >
               <Zap className="w-5 h-5 mr-2" />
-              Access the Platform
+              Schedule a Demo
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
         </div>
       </AnimatedSection>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        defaultInterest={modalInterest}
+        source={modalSource}
+      />
     </div>
   );
 }
