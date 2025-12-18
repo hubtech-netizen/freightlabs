@@ -29,7 +29,7 @@ import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
 export function LoadForge() {
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
+      <section id="hero-section" className="relative min-h-screen bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
@@ -305,7 +305,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-brand-azure via-blue-50/50 to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy">
+      <section id="features-section" className="py-24 bg-gradient-to-br from-brand-azure via-blue-50/50 to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -382,7 +382,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section id="how-it-works-section" className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -421,7 +421,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
+      <section id="benefits-section" className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
