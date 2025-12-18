@@ -91,7 +91,7 @@ export function About() {
 
   return (
     <div className="min-h-screen">
-      <section id="hero-section" className="relative min-h-screen bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy overflow-hidden">
+      <section className="relative min-h-screen bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
@@ -163,7 +163,7 @@ export function About() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-slate-50 dark:from-brand-navy to-transparent" />
       </section>
 
-      <section id="who-we-are-section" className="py-24 bg-gradient-to-b from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
+      <section className="py-24 bg-gradient-to-b from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -220,7 +220,7 @@ export function About() {
         </div>
       </section>
 
-      <section id="rituals-section" className="py-24 bg-card">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,7 +268,7 @@ export function About() {
         </div>
       </section>
 
-      <section id="team-section" className="py-24 bg-gradient-to-br from-brand-slate-50 to-brand-azure dark:from-brand-navy dark:to-brand-navy-light">
+      <section className="py-24 bg-gradient-to-br from-brand-slate-50 to-brand-azure dark:from-brand-navy dark:to-brand-navy-light">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -312,7 +312,7 @@ export function About() {
         </div>
       </section>
 
-      <section id="cta-section" className="py-24 bg-card">
+      <section className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -322,7 +322,7 @@ export function About() {
               className="bg-gradient-to-br from-brand-navy to-brand-navy-light rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,.05)_25%,rgba(59,130,246,.05)_50%,transparent_50%,transparent_75%,rgba(59,130,246,.05)_75%)] bg-[length:20px_20px]" />
-
+              
               <div className="relative z-10 text-center">
                 <div className="w-20 h-20 rounded-2xl bg-brand-blue/20 flex items-center justify-center mx-auto mb-6">
                   <Users className="w-10 h-10 text-brand-blue" />

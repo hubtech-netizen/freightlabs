@@ -83,7 +83,7 @@ export function Contact() {
 
   return (
     <div className="min-h-screen">
-      <section id="hero-section" className="relative py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f608_1px,transparent_1px),linear-gradient(to_bottom,#3b82f608_1px,transparent_1px)] bg-[size:24px_24px]" />
 
         <div className="absolute inset-0 overflow-hidden">
@@ -117,7 +117,7 @@ export function Contact() {
         </div>
       </section>
 
-      <section id="contact-form-section" className="py-16 bg-card">
+      <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-12">
             <motion.div

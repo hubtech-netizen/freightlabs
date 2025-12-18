@@ -76,7 +76,7 @@ export function Home() {
 
   return (
     <div className="min-h-screen">
-      <section id="hero-section" className="relative min-h-screen bg-gradient-to-br from-brand-slate-50 via-brand-azure to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
+      <section className="relative min-h-screen bg-gradient-to-br from-brand-slate-50 via-brand-azure to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
           style={{
@@ -252,7 +252,7 @@ export function Home() {
         </div>
       </section>
 
-      <AnimatedSection id="choose-path-section" className="py-24 bg-card">
+      <AnimatedSection className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.div
@@ -462,7 +462,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="routeforge-preview-section" className="py-24 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -564,7 +564,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="loadforge-preview-section" className="py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -665,7 +665,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="data-section" className="py-24 bg-card">
+      <AnimatedSection className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div

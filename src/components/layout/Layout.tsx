@@ -4,7 +4,6 @@ import Lenis from 'lenis';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { ThemeBackground } from '@/components/shared/ThemeBackground';
-import { AtmosphereController } from '@/components/shared/AtmosphereController';
 
 export function Layout() {
   useEffect(() => {
@@ -29,7 +28,6 @@ export function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <AtmosphereController />
       <ThemeBackground />
       <Header />
       <main className="flex-1 pt-20 relative z-10">
