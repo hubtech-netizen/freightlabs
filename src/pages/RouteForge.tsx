@@ -29,7 +29,7 @@ export function RouteForge() {
     {
       step: '01',
       title: 'Set Your Parameters',
-      description: 'Input your equipment, home base, and Hours of Service (HOS).',
+      description: 'Input your equipment, home base, and Hours of Service (HOS—your legal driving hours).',
       icon: Settings,
     },
     {
@@ -56,8 +56,8 @@ export function RouteForge() {
     },
     {
       icon: Clock,
-      title: 'HOS Optimization',
-      description: 'Routes are calculated to maximize your legal driving hours.',
+      title: 'HOS (Hours of Service) Optimization',
+      description: 'Routes are calculated to maximize your legal driving hours without violations.',
       stat: 'Max',
       statLabel: 'Driving hours',
     },
@@ -71,9 +71,9 @@ export function RouteForge() {
     {
       icon: DollarSign,
       title: 'Revenue Stability',
-      description: 'Consistent weekly earnings with minimal variance in the volatile spot market.',
-      stat: '<5%',
-      statLabel: 'Weekly variance',
+      description: 'Consistent weekly paychecks that you can count on, week after week.',
+      stat: '<$200',
+      statLabel: 'Weekly variation',
     },
   ];
 
@@ -185,10 +185,10 @@ export function RouteForge() {
 
               <div className="flex items-center gap-4 p-5 bg-card border-l-4 border-green-500 rounded-xl shadow-lg">
                 <div className="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                  <TrendingUp className="w-7 h-7 text-green-600" />
+                  <DollarSign className="w-7 h-7 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-base font-bold text-foreground">Carriers using RouteForge™ see a variance of less than 5% in weekly revenue—delivering stability in a volatile market.</p>
+                  <p className="text-base font-bold text-foreground">Earn within $200 of your target every week—no more $4,000 weeks followed by $1,500 weeks. RouteForge™ delivers consistent paychecks in a volatile market.</p>
                 </div>
               </div>
 

@@ -144,14 +144,14 @@ export function Home() {
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
-                The Engine of{' '}
+                AI-Powered Freight Matching{' '}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-blue-hover to-brand-blue">
-                  American Freight
+                  That Actually Works
                 </span>
               </h1>
 
               <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
-                A unified logistics platform combining AI-driven capacity with industrial-strength control. Move loads faster, smarter, and with total visibility.
+                A unified logistics platform that moves loads faster, smarter, and with total visibility. Get matched capacity in minutes, not hours.
               </p>
 
               <div className="flex items-center gap-3 p-4 bg-card border-l-4 border-brand-orange rounded-lg shadow-sm">
@@ -301,7 +301,7 @@ export function Home() {
                     <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">0 Hours Dispatching</p>
-                      <p className="text-xs text-muted-foreground">Our algorithms negotiate and book consecutive loads while you drive</p>
+                      <p className="text-xs text-muted-foreground">Our AI negotiates rates and books consecutive loads automatically—even while you sleep</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -345,9 +345,9 @@ export function Home() {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-sm">Instant Tender Acceptance</p>
+                      <p className="font-semibold text-sm">Instant Carrier Confirmation</p>
                       <p className="text-xs text-muted-foreground">
-                        Match your freight with verified trucks already positioned in your lane
+                        Match your freight with verified trucks already running your lanes
                       </p>
                     </div>
                   </div>
@@ -468,7 +468,10 @@ export function Home() {
                   Dispatch Automation for the Modern Fleet
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  RouteForge™ is an intelligent routing tool that builds your schedule for you. By analyzing 50+ variables—including your equipment type (Dry Van, Reefer, Flatbed) and preferred lanes—it negotiates and books consecutive loads.
+                  RouteForge™ automatically finds and books your next load before you finish your current one. No more calling brokers. No more empty miles. Just back-to-back hauls that maximize your revenue per week.
+                </p>
+                <p className="text-base text-muted-foreground">
+                  The system analyzes your equipment type (Dry Van, Reefer, Flatbed), preferred lanes, and Hours of Service to build routes that keep you legally compliant and constantly moving.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -601,7 +604,10 @@ export function Home() {
                   <span className="text-brand-blue">Mitigate Risk.</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  LoadForge™ is the command center for shipping logistics. It doesn&apos;t just post loads; it intelligently matches your freight with verified, high-performance carriers. From tender to delivery, automate your supply chain with industrial precision.
+                  LoadForge™ finds you a verified truck in minutes, not hours. Post your load once, and our system automatically matches it with carriers already running your lanes—no phone tag, no uncertainty, no surprises.
+                </p>
+                <p className="text-base text-muted-foreground">
+                  Every carrier is pre-screened with our 8-Point Compliance Check (covering insurance, authority, safety ratings, and fraud checks), so you never worry about performance or liability.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -613,7 +619,7 @@ export function Home() {
                   <div className="p-4 bg-card rounded-xl border border-border">
                     <FileCheck className="w-8 h-8 text-brand-blue mb-3" />
                     <h4 className="font-bold mb-1">Compliance Automation</h4>
-                    <p className="text-sm text-muted-foreground">7-point safety check every time</p>
+                    <p className="text-sm text-muted-foreground">8-Point safety check every time</p>
                   </div>
                 </div>
 

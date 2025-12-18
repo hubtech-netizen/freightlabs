@@ -368,42 +368,71 @@ export function LaneMaker() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               The <span className="text-brand-blue">8-Point</span> Compliance Check
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground mb-6">
               We take risk off the road. Our automated system validates every carrier against 8 strict safety protocols before dispatch. We automatically reject carriers that don&apos;t meet these standards.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            {[
-              { icon: FileCheck, label: '1. Carrier Authority Status (Active MC/DOT)', num: '1' },
-              { icon: Shield, label: '2. Insurance Coverage Verification', num: '2' },
-              { icon: BarChart3, label: '3. FMCSA Safety Rating Analysis', num: '3' },
-              { icon: CheckCircle2, label: '4. Inspection History Review', num: '4' },
-              { icon: Shield, label: '5. Fraud & Double-Brokering Check', num: '5' },
-              { icon: Truck, label: '6. Equipment Type Validation', num: '6' },
-              { icon: Users, label: '7. Operational History & Performance', num: '7' },
-              { icon: Shield, label: '8. Driver Identity Verification', num: '8' },
-            ].map((item, index) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="p-4 text-center border-2 hover:border-brand-blue transition-all hover:shadow-lg group h-full">
-                  <div className="w-12 h-12 rounded-xl bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-blue transition-colors">
-                    <item.icon className="w-6 h-6 text-brand-blue group-hover:text-white transition-colors" />
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-8 border-2">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-brand-blue" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm mb-1">Authority & Insurance</p>
+                      <p className="text-xs text-muted-foreground">Active MC/DOT verification and coverage checks</p>
+                    </div>
                   </div>
-                  <p className="text-sm font-semibold">{item.label}</p>
-                </Card>
-              </motion.div>
-            ))}
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-brand-blue" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm mb-1">Safety & Performance</p>
+                      <p className="text-xs text-muted-foreground">FMCSA rating analysis and inspection history</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-brand-blue" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm mb-1">Fraud Protection</p>
+                      <p className="text-xs text-muted-foreground">Double-brokering check and identity verification</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-brand-blue" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm mb-1">Equipment Match</p>
+                      <p className="text-xs text-muted-foreground">Type validation and operational history</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-brand-azure dark:bg-brand-navy-light rounded-xl p-6 flex flex-col justify-center">
+                  <div className="text-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-brand-blue/20 flex items-center justify-center mx-auto mb-3">
+                      <Shield className="w-8 h-8 text-brand-blue" />
+                    </div>
+                    <p className="text-2xl font-bold text-brand-blue">100%</p>
+                    <p className="text-sm text-muted-foreground">Compliance Rate</p>
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground">
+                    Every carrier must pass all 8 checks before they can haul your freight
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
