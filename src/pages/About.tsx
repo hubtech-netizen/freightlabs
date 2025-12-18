@@ -22,6 +22,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
+import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
 
 export function About() {
   const principles = [
@@ -133,7 +134,7 @@ export function About() {
                 </p>
               </div>
 
-              <div className="flex items-center justify-center gap-8 pt-8">
+              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 pt-8">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-brand-blue">
                     <AnimatedCounter end={50} suffix="+" />
@@ -174,9 +175,11 @@ export function About() {
               <Users className="w-4 h-4 text-brand-blue" />
               <span className="text-sm font-semibold text-brand-blue">Who We Are</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Logistics Experts. <span className="text-brand-blue">Technology Natives.</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Logistics Experts. <span className="text-brand-blue">Technology Natives.</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground">
               FreightLabs was founded on a belief that the trucking industry deserves better tools. We aren&apos;t just software developers; we are logistics professionals who understand the difference between a dry van and a reefer. We use AI to empower the human element, giving shippers and carriers the <strong>predictive data</strong> they need to make smarter business decisions.
             </p>
@@ -188,7 +191,9 @@ export function About() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12 mt-16"
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h3>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h3>
+            </MaskedTextReveal>
           </motion.div>
 
           <div className="max-w-5xl mx-auto">
@@ -227,9 +232,11 @@ export function About() {
               <Atom className="w-4 h-4 text-brand-orange" />
               <span className="text-sm font-semibold text-brand-orange">Culture & Rituals</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              How We <span className="text-brand-orange">Operate</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                How We <span className="text-brand-orange">Operate</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground">
               Our rituals define who we are. They are the experiments that shape our culture and drive innovation.
             </p>
@@ -273,9 +280,11 @@ export function About() {
               <Users className="w-4 h-4 text-brand-blue" />
               <span className="text-sm font-semibold">Meet the Scientists</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              The <span className="text-brand-blue">Leadership</span> Team
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                The <span className="text-brand-blue">Leadership</span> Team
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground">
               Our leaders are not executives. They are scientists leading experiments that reshape logistics.
             </p>
@@ -318,9 +327,11 @@ export function About() {
                 <div className="w-20 h-20 rounded-2xl bg-brand-blue/20 flex items-center justify-center mx-auto mb-6">
                   <Users className="w-10 h-10 text-brand-blue" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Ready to partner with a team that understands your business?
-                </h2>
+                <MaskedTextReveal useViewportTrigger={true}>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    Ready to partner with a team that understands your business?
+                  </h2>
+                </MaskedTextReveal>
                 <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                   Let&apos;s work together to transform your freight operations with data-driven solutions.
                 </p>
@@ -355,9 +366,11 @@ export function About() {
               <Rocket className="w-4 h-4 text-brand-blue" />
               <span className="text-sm font-semibold text-brand-blue">The Future</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Building the Future of <span className="text-brand-blue">Freight</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Building the Future of <span className="text-brand-blue">Freight</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground mb-8">
               We are not stopping at matching. The future includes integrated Factoring Partnerships, 
               deep Telematics Integration, Franchise 3PL Offices, and dedicated Mobile Apps for drivers and shippers.

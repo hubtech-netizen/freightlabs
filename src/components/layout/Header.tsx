@@ -73,9 +73,11 @@ export function Header() {
 
           <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle />
-            <Button className="bg-brand-orange hover:bg-brand-orange/90 text-white">
-              Get Started
-            </Button>
+            <Link to="/contact">
+              <Button className="bg-brand-orange hover:bg-brand-orange-hover text-white shadow-md">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           <div className="lg:hidden flex items-center gap-2">
@@ -96,27 +98,41 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-border"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="lg:hidden border-t border-border backdrop-blur-md bg-background/95"
           >
-            <nav className="flex flex-col py-4 space-y-2">
-              {navLinks.map((link) => (
-                <Link
+            <nav className="flex flex-col py-4 space-y-1">
+              {navLinks.map((link, index) => (
+                <motion.div
                   key={link.path}
-                  to={link.path}
-                  className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    location.pathname === link.path
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-foreground hover:bg-accent'
-                  }`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.2 }}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    to={link.path}
+                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                      location.pathname === link.path
+                        ? 'bg-primary/10 text-primary shadow-sm'
+                        : 'text-foreground hover:bg-accent hover:translate-x-1'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
-              <div className="px-4 pt-2">
-                <Button className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
-                  Get Started
-                </Button>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.05 + 0.1, duration: 0.2 }}
+                className="px-4 pt-3"
+              >
+                <Link to="/contact">
+                  <Button className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white shadow-lg">
+                    Get Started
+                  </Button>
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

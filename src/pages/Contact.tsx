@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -320,9 +321,11 @@ export function Contact() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Department <span className="text-brand-blue">Contacts</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Department <span className="text-brand-blue">Contacts</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-lg text-muted-foreground">
               Connect directly with the team that can best help you with your logistics needs.
             </p>
@@ -368,15 +371,19 @@ export function Contact() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto text-white"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Prefer to Schedule a Demo?
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Prefer to Schedule a Demo?
+              </h2>
+            </MaskedTextReveal>
             <p className="text-lg text-white/80 mb-8">
               Book a personalized walkthrough of our platform with one of our logistics experts.
             </p>
-            <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg">
-              Request Platform Demo
-            </Button>
+            <a href="#contact-form" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+              <Button className="bg-white text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-xl shadow-lg">
+                Request Platform Demo
+              </Button>
+            </a>
           </motion.div>
         </div>
       </section>

@@ -24,6 +24,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
+import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
 
 export function RouteForge() {
   const steps = [
@@ -130,16 +131,20 @@ export function RouteForge() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-green-500/20 hover:shadow-xl transition-all group">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-950/30 transition-all">
-                  Watch Demo
-                </Button>
+                <Link to="/contact">
+                  <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-green-500/20 hover:shadow-xl transition-all group">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-950/30 transition-all">
+                    Watch Demo
+                  </Button>
+                </Link>
               </div>
 
-              <div className="flex items-center gap-8 pt-4">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 md:gap-8 pt-4">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-green-600">
                     <AnimatedCounter end={98} suffix="%" />
@@ -240,9 +245,11 @@ export function RouteForge() {
               <Brain className="w-4 h-4" />
               <span className="text-sm font-semibold">How It Works</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Three Steps to <span className="text-green-600">Automated Routes</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Three Steps to <span className="text-green-600">Automated Routes</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground">
               From manual dispatch to AI-powered route planning in three simple steps.
             </p>
@@ -283,9 +290,11 @@ export function RouteForge() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Feature <span className="text-green-600">Breakdown</span>
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Feature <span className="text-green-600">Breakdown</span>
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground">
               Everything you need to maximize utilization and minimize empty miles.
             </p>
@@ -370,17 +379,21 @@ export function RouteForge() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto text-white"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Keep your trucks moving
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Keep your trucks moving
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-white/80 mb-8">
               Join the carrier network using RouteForge to maximize revenue and minimize empty miles.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
-                Join the Carrier Network
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
+                  Join the Carrier Network
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               <Link to="/contact">
                 <Button variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl">
                   Contact Us

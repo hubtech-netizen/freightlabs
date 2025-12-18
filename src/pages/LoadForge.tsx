@@ -24,6 +24,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
+import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
 
 export function LoadForge() {
   return (
@@ -84,12 +85,14 @@ export function LoadForge() {
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-brand-blue/20 hover:bg-brand-azure dark:hover:bg-brand-navy-light transition-all">
-                  View Features
-                </Button>
+                <a href="#features">
+                  <Button variant="outline" className="px-8 py-6 text-lg rounded-xl border-2 border-brand-blue/20 hover:bg-brand-azure dark:hover:bg-brand-navy-light transition-all">
+                    View Features
+                  </Button>
+                </a>
               </div>
 
-              <div className="flex items-center gap-8 pt-4">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 md:gap-8 pt-4">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-brand-blue">50%</div>
                   <div className="text-sm text-muted-foreground">Faster Coverage</div>
@@ -193,7 +196,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section id="features" className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -202,7 +205,9 @@ export function LoadForge() {
               viewport={{ once: true }}
             >
               <div className="mb-8">
-                <h3 className="text-3xl font-bold mb-4">Core Capabilities</h3>
+                <MaskedTextReveal useViewportTrigger={true}>
+                  <h3 className="text-3xl font-bold mb-4">Core Capabilities</h3>
+                </MaskedTextReveal>
               </div>
 
               <div className="space-y-6">
@@ -250,7 +255,9 @@ export function LoadForge() {
               viewport={{ once: true }}
             >
               <div className="mb-8">
-                <h3 className="text-3xl font-bold mb-4">For Brokers</h3>
+                <MaskedTextReveal useViewportTrigger={true}>
+                  <h3 className="text-3xl font-bold mb-4">For Brokers</h3>
+                </MaskedTextReveal>
                 <p className="text-lg text-muted-foreground">
                   LoadForge™ Pro accelerates your brokerage operations with high-volume execution tools.
                 </p>
@@ -306,9 +313,11 @@ export function LoadForge() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              The <span className="text-brand-blue">8-Point</span> Compliance Check
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                The <span className="text-brand-blue">8-Point</span> Compliance Check
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-muted-foreground mb-6">
               We take risk off the road. Our automated system validates every carrier against 8 strict safety protocols before dispatch. We automatically reject carriers that don&apos;t meet these standards.
             </p>
@@ -420,9 +429,11 @@ export function LoadForge() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto text-white"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Optimize your supply chain with industrial-grade tech
-            </h2>
+            <MaskedTextReveal useViewportTrigger={true}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Optimize your supply chain with industrial-grade tech
+              </h2>
+            </MaskedTextReveal>
             <p className="text-xl text-white/80 mb-8">
               Join the network of shippers and 3PLs using LoadForge to streamline their operations.
             </p>
