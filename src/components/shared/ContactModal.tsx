@@ -5,12 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card } from '@/components/ui/card';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -53,21 +47,38 @@ export function ContactModal({ isOpen, onClose, defaultInterest = 'general', sou
     setIsSubmitting(true);
 
     try {
-      const { error: submitError } = await supabase.from('leads').insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          phone: formData.phone || null,
-          user_type: formData.user_type,
-          interest: formData.interest,
-          message: formData.message || null,
-          source,
-          status: 'new',
-        },
-      ]);
+      // ==========================================
+      // DATABASE SUBMISSION - IMPLEMENTATION NEEDED
+      // ==========================================
+      // TODO: Connect to your backend API or database here
+      //
+      // Expected payload structure:
+      // {
+      //   name: formData.name,
+      //   email: formData.email,
+      //   company: formData.company,
+      //   phone: formData.phone || null,
+      //   user_type: formData.user_type,
+      //   interest: formData.interest,
+      //   message: formData.message || null,
+      //   source: source,
+      //   status: 'new',
+      // }
+      //
+      // Example Supabase implementation:
+      // const { error } = await supabase.from('leads').insert([payload]);
+      // if (error) throw error;
+      //
+      // Example API call:
+      // const response = await fetch('/api/leads', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(payload)
+      // });
+      // if (!response.ok) throw new Error('Submission failed');
+      // ==========================================
 
-      if (submitError) throw submitError;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setIsSubmitted(true);
       setTimeout(() => {
