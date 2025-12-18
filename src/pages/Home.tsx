@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { withGPU } from '@/lib/animation';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 import {
   ArrowRight,
   Truck,
@@ -28,6 +33,39 @@ import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { Card } from '@/components/ui/card';
 
 export function Home() {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       <section className="relative min-h-screen bg-gradient-to-br from-brand-slate-50 via-brand-azure to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
@@ -197,14 +235,15 @@ export function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              ref={(el) => (cardRefs.current[0] = el)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              style={withGPU()}
+              className="will-change-transform"
             >
-              <Card className="p-8 h-full border-2 hover:border-green-500 transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-green-500 transition-all hover:shadow-xl group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-500/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-500/20">
                   <Truck className="w-7 h-7 text-white" />
@@ -253,12 +292,13 @@ export function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              ref={(el) => (cardRefs.current[1] = el)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              style={withGPU()}
+              className="will-change-transform"
             >
-              <Card className="p-8 h-full border-2 hover:border-brand-blue transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-brand-blue transition-all hover:shadow-xl group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-blue/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-blue to-brand-blue-hover flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-brand-blue/20">
                   <Package className="w-7 h-7 text-white" />
@@ -311,12 +351,13 @@ export function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              ref={(el) => (cardRefs.current[2] = el)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              style={withGPU()}
+              className="will-change-transform"
             >
-              <Card className="p-8 h-full border-2 hover:border-amber-500 transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-amber-500 transition-all hover:shadow-xl group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-amber-500/20">
                   <Building2 className="w-7 h-7 text-white" />
