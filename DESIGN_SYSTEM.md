@@ -883,6 +883,345 @@ src/
 
 ---
 
+## Advanced Features & Responsive Enhancements
+
+### Smooth Scrolling Implementation
+
+#### Lenis Integration
+The project uses Lenis for premium smooth scrolling with heavy physics feel.
+
+**Configuration:**
+```jsx
+// src/components/layout/Layout.tsx
+const lenis = new Lenis({
+  lerp: 0.1,              // Smooth interpolation (0.1 = heavy feel)
+  wheelMultiplier: 1.1,    // Scroll speed multiplier
+  smoothWheel: true,       // Enable smooth wheel scrolling
+  smoothTouch: false,      // Disable on touch devices
+});
+```
+
+**Effect:** Creates a premium, controlled scrolling experience on desktop devices.
+
+### Fluid Typography System
+
+#### Responsive Text Scaling
+Text sizes automatically scale between mobile and desktop using CSS `clamp()`:
+
+```css
+.text-fluid-sm    { font-size: clamp(0.875rem, 0.8rem + 0.15vw, 1rem); }
+.text-fluid-base  { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); }
+.text-fluid-lg    { font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem); }
+.text-fluid-xl    { font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.875rem); }
+.text-fluid-2xl   { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem); }
+.text-fluid-3xl   { font-size: clamp(1.875rem, 1.5rem + 1.5vw, 3rem); }
+.text-fluid-4xl   { font-size: clamp(2.25rem, 1.8rem + 2vw, 3.75rem); }
+```
+
+**Usage:**
+```jsx
+<AnimatedHeading as="h1" className="text-fluid-4xl">
+  Your Headline
+</AnimatedHeading>
+```
+
+**Mobile Scaling:** Automatically reduces header sizes by ~20% on mobile devices.
+
+### Theme-Aware Components
+
+#### Dynamic Card Styling
+
+**Light Theme:**
+- Borders: `#E5E5E5` (1px solid)
+- Shadow: `shadow-sm` → `shadow-xl` on hover
+- Clean, minimal aesthetic
+
+**Dark Theme:**
+- Borders: `rgba(255,255,255,0.1)` (1px solid)
+- Effect: Glassmorphism (`bg-white/5` + `backdrop-blur-lg`)
+- Premium, modern look
+
+**Responsive Cards:**
+```tsx
+// Utility function
+import { getCardClasses } from '@/lib/card-styles';
+
+const cardClasses = getCardClasses(theme, mobile = true);
+```
+
+**CSS Classes:**
+```css
+.card-light         /* Desktop light theme */
+.card-dark          /* Desktop dark theme */
+.card-light-mobile  /* Responsive light (removes on mobile) */
+.card-dark-mobile   /* Responsive dark (removes on mobile) */
+```
+
+### Animated Components
+
+#### AnimatedSection
+Wraps sections with entrance animations:
+
+```jsx
+<AnimatedSection className="py-24" delay={0}>
+  {/* Your content */}
+</AnimatedSection>
+```
+
+**Features:**
+- Fade in + 20px slide up
+- Triggers at 10% viewport visibility
+- Cubic-bezier easing for premium feel
+- Includes `content-visibility: auto` for performance
+
+#### AnimatedHeading
+Dynamic font-weight transitions on scroll:
+
+```jsx
+<AnimatedHeading as="h2" className="text-fluid-3xl">
+  Your Heading
+</AnimatedHeading>
+```
+
+**Behavior:**
+- Font-weight: 600 → 800 when centered in viewport
+- Creates emphasis as user scrolls
+- Smooth transition (0.3s)
+
+### Background System
+
+#### ThemeBackground Component
+Intelligent background that adapts to theme and device:
+
+**Light Theme:**
+- Grid pattern: `#F2F2F2` on white
+- Mouse parallax: Max 10px offset
+- GPU-accelerated transforms
+
+**Dark Theme (Desktop):**
+- Base: `#0A0A0B` solid
+- Blue gradient: 30%/30% position, 10% opacity
+- Green gradient: 70%/60% position, 10% opacity
+- SVG blur filter: `stdDeviation="100"`
+
+**Dark Theme (Mobile):**
+- Static CSS gradients (no SVG)
+- Battery-optimized rendering
+- Same visual effect, better performance
+
+### Performance Optimizations
+
+#### GPU Acceleration
+All animations use hardware acceleration:
+
+```tsx
+import { withGPU } from '@/lib/animation';
+
+<div style={withGPU()}>
+  {/* Content */}
+</div>
+```
+
+**Generated CSS:**
+```css
+transform: translate3d(0, 0, 0);
+will-change: transform;
+backface-visibility: hidden;
+```
+
+#### Content Visibility
+Below-the-fold sections use modern CSS optimization:
+
+```css
+.content-visibility-auto {
+  content-visibility: auto;
+}
+```
+
+**Effect:** Browser skips rendering off-screen content, improving scroll performance to 60fps.
+
+#### Mobile Optimizations
+Automatically applied on screens < 768px:
+
+1. **Borders & Shadows:** Removed for clean UI
+2. **Background:** Static gradients instead of SVG filters
+3. **Animations:** Simplified or disabled
+4. **Parallax:** Disabled mouse tracking
+5. **ScrollTrigger:** Pinning effects disabled
+
+### GSAP ScrollTrigger Integration
+
+#### useScrollPin Hook
+Desktop-only scroll pinning effects:
+
+```tsx
+import { useScrollPin } from '@/hooks/useScrollPin';
+
+const { pinRef, triggerRef } = useScrollPin({
+  pinSpacing: false,
+  start: 'top top',
+  end: 'bottom top',
+  scrub: 1,
+  enabled: !isMobile  // Automatically disabled on mobile
+});
+```
+
+**Usage Example:**
+```jsx
+<div ref={triggerRef}>
+  <div ref={pinRef}>
+    {/* Content that pins */}
+  </div>
+  {/* Content that scrolls past */}
+</div>
+```
+
+**Desktop Effect:** Left-side text pins while right-side content scrolls.
+
+**Mobile Behavior:** Normal stacked layout, no pinning.
+
+### Responsive Design Rules
+
+#### Mobile (<768px)
+- No borders or shadows on cards
+- Vertical stacking (no horizontal grids)
+- 16px gaps between elements
+- Static backgrounds (no SVG filters)
+- Disabled complex animations
+- No scroll pinning effects
+- Simplified card styles
+
+#### Desktop (≥768px)
+- Full border and shadow effects
+- Horizontal grid layouts
+- Larger gaps (24-32px)
+- SVG filter backgrounds
+- Full animation suite
+- ScrollTrigger pinning
+- Glassmorphism effects
+- Mouse parallax tracking
+
+### Utility Files
+
+#### `/src/lib/card-styles.ts`
+```tsx
+export function getCardClasses(
+  theme: 'light' | 'dark',
+  mobile?: boolean
+): string;
+
+export function getSectionClasses(): string;
+```
+
+#### `/src/lib/animation.ts`
+```tsx
+export function withGPU(): CSSProperties;
+```
+
+#### `/src/hooks/useScrollPin.ts`
+```tsx
+export function useScrollPin(options: {
+  pinSpacing?: boolean;
+  start?: string;
+  end?: string;
+  scrub?: boolean | number;
+  enabled?: boolean;
+}): { pinRef, triggerRef };
+```
+
+### Component Hierarchy
+
+```
+src/
+├── components/
+│   ├── shared/
+│   │   ├── AnimatedSection.tsx      # Section wrapper with animations
+│   │   ├── AnimatedHeading.tsx      # Dynamic font-weight headings
+│   │   └── ThemeBackground.tsx      # Adaptive background system
+│   └── layout/
+│       └── Layout.tsx                # Lenis initialization
+├── lib/
+│   ├── card-styles.ts                # Card styling utilities
+│   └── animation.ts                  # GPU acceleration
+├── hooks/
+│   └── useScrollPin.ts               # GSAP ScrollTrigger hook
+└── index.css                         # Global styles & utilities
+```
+
+### CSS Architecture Updates
+
+#### New Utility Classes
+```css
+/* Typography */
+.text-fluid-sm, .text-fluid-base, .text-fluid-lg,
+.text-fluid-xl, .text-fluid-2xl, .text-fluid-3xl,
+.text-fluid-4xl
+
+/* Performance */
+.gpu-accelerated
+.content-visibility-auto
+
+/* Theme-aware Cards */
+.card-light, .card-dark
+.card-light-mobile, .card-dark-mobile
+```
+
+#### Font Family
+```css
+font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+             'Segoe UI', Roboto, sans-serif;
+```
+
+**Loaded via:** Google Fonts CDN in `src/index.css`
+
+### Best Practices for New Features
+
+#### DO:
+- Use `AnimatedSection` for all new sections
+- Apply `AnimatedHeading` to section titles
+- Use fluid typography classes (`text-fluid-*`)
+- Test on both mobile and desktop
+- Use `getCardClasses()` for theme-aware cards
+- Apply GPU acceleration to animated elements
+- Include `content-visibility-auto` on below-fold content
+
+#### DON'T:
+- Use fixed font sizes (use fluid classes)
+- Apply complex effects without mobile checks
+- Create animations without GPU acceleration
+- Forget to test theme switching
+- Skip performance optimizations
+- Use CSS filters on mobile
+- Override responsive utilities
+
+### Browser Compatibility
+
+#### Full Support:
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+#### Graceful Degradation:
+- Older browsers: Static layouts
+- No JavaScript: Base styles remain functional
+- Reduced motion: Respects `prefers-reduced-motion`
+
+---
+
+**v2.0.0** - December 2024
+- Added Lenis smooth scrolling integration
+- Implemented fluid typography system
+- Created theme-aware card components
+- Added animated section/heading components
+- Integrated GSAP ScrollTrigger with mobile detection
+- Implemented mobile-optimized backgrounds
+- Added GPU acceleration utilities
+- Introduced content-visibility optimizations
+- Enhanced responsive design system
+
+---
+
 **End of Design System Documentation**
 
 *For questions or updates, refer to this document when implementing new features or pages for FreightLabs.*

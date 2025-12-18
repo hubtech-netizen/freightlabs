@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { withGPU } from '@/lib/animation';
 
@@ -6,6 +6,20 @@ export function ThemeBackground() {
   const { theme } = useTheme();
   const gridRef = useRef<HTMLDivElement>(null);
   const isDark = theme === 'dark';
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     if (isDark || !gridRef.current) return;
@@ -22,7 +36,7 @@ export function ThemeBackground() {
       const clampedX = Math.max(-10, Math.min(10, xOffset));
       const clampedY = Math.max(-10, Math.min(10, yOffset));
 
-      gridRef.current.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
+      gridRef.current.style.transform = `translate3d(${clampedX}px, ${clampedY}px, 0)`;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -33,6 +47,22 @@ export function ThemeBackground() {
   }, [isDark]);
 
   if (isDark) {
+    if (isMobile) {
+      return (
+        <div
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{
+            background: `
+              #0A0A0B,
+              radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)
+            `,
+            ...withGPU(),
+          }}
+        />
+      );
+    }
+
     return (
       <div
         className="fixed inset-0 pointer-events-none z-0"

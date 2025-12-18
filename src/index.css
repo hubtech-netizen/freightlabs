@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,19 +65,81 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.5;
   }
 }
 
 @layer utilities {
   .gpu-accelerated {
-    transform: translateZ(0);
+    transform: translate3d(0, 0, 0);
     will-change: transform;
     backface-visibility: hidden;
   }
 
   .smooth-scroll {
     scroll-behavior: auto;
+  }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+  }
+
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 0.8rem + 0.15vw, 1rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.875rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  }
+
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 1.5rem + 1.5vw, 3rem);
+  }
+
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 1.8rem + 2vw, 3.75rem);
+  }
+}
+
+@layer components {
+  .card-light {
+    @apply border border-[#E5E5E5] shadow-sm transition-shadow duration-300 hover:shadow-xl;
+  }
+
+  .card-light-mobile {
+    @apply md:border md:border-[#E5E5E5] md:shadow-sm md:transition-shadow md:duration-300 md:hover:shadow-xl;
+  }
+
+  .card-dark {
+    @apply border border-white/10 bg-white/5 backdrop-blur-lg;
+  }
+
+  .card-dark-mobile {
+    @apply md:border md:border-white/10 md:bg-white/5 md:backdrop-blur-lg;
   }
 }

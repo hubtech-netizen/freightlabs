@@ -2,6 +2,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { withGPU } from '@/lib/animation';
 import { useEffect, useRef } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { getCardClasses } from '@/lib/card-styles';
+import { AnimatedSection } from '@/components/shared/AnimatedSection';
+import { AnimatedHeading } from '@/components/shared/AnimatedHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -33,6 +37,7 @@ import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { Card } from '@/components/ui/card';
 
 export function Home() {
+  const { theme } = useTheme();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -109,12 +114,12 @@ export function Home() {
                 </span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
+              <AnimatedHeading as="h1" className="text-fluid-4xl font-bold text-foreground leading-tight">
                 AI-Powered Freight Matching{' '}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-blue-hover to-brand-blue">
                   That Actually Works
                 </span>
-              </h1>
+              </AnimatedHeading>
 
               <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
                 A unified logistics platform that moves loads faster, smarter, and with total visibility. Get matched capacity in minutes, not hours.
@@ -210,7 +215,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <AnimatedSection className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.div
@@ -222,15 +227,10 @@ export function Home() {
               <Target className="w-4 h-4 text-brand-blue" />
               <span className="text-sm font-semibold text-brand-blue">Choose Your Path</span>
             </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold mb-4"
-            >
+            <AnimatedHeading className="text-fluid-3xl mb-4">
               Built for the Backbone of the Supply Chain
-            </motion.h2>
-            <p className="text-xl text-muted-foreground">
+            </AnimatedHeading>
+            <p className="text-fluid-lg text-muted-foreground">
               Real-world logistics problems require data-driven solutions. Select your operation type to see the metrics that matter.
             </p>
           </div>
@@ -409,9 +409,9 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-24 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -433,10 +433,10 @@ export function Home() {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <h2 className="text-4xl md:text-5xl font-bold">
+                <AnimatedHeading className="text-fluid-3xl">
                   Dispatch Automation for the Modern Fleet
-                </h2>
-                <p className="text-lg text-muted-foreground">
+                </AnimatedHeading>
+                <p className="text-fluid-lg text-muted-foreground">
                   RouteForge™ automatically finds and books your next load before you finish your current one. No more calling brokers. No more empty miles. Just back-to-back hauls that maximize your revenue per week.
                 </p>
                 <p className="text-base text-muted-foreground">
@@ -509,9 +509,9 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -568,10 +568,10 @@ export function Home() {
                 viewport={{ once: true }}
                 className="space-y-6 order-1 lg:order-2"
               >
-                <h2 className="text-4xl md:text-5xl font-bold">
+                <AnimatedHeading className="text-fluid-3xl">
                   Secure Capacity.{' '}
                   <span className="text-brand-blue">Mitigate Risk.</span>
-                </h2>
+                </AnimatedHeading>
                 <p className="text-lg text-muted-foreground">
                   LoadForge™ finds you a verified truck in minutes, not hours. Post your load once, and our system automatically matches it with carriers already running your lanes—no phone tag, no uncertainty, no surprises.
                 </p>
@@ -610,9 +610,9 @@ export function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-24 bg-card">
+      <AnimatedSection className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -625,10 +625,10 @@ export function Home() {
                 <Zap className="w-4 h-4 text-brand-orange" />
                 <span className="text-sm font-semibold text-brand-orange">Data Over Opinions</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <AnimatedHeading className="text-fluid-3xl mb-4">
                 Technology Built for the <span className="text-brand-blue">Long Haul</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              </AnimatedHeading>
+              <p className="text-fluid-lg text-muted-foreground max-w-3xl mx-auto">
                 Trust signals that matter to modern logistics operations
               </p>
             </motion.div>
@@ -715,9 +715,9 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
+      <AnimatedSection className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -725,9 +725,9 @@ export function Home() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto text-white"
           >
-            <h2 className="text-4xl font-bold mb-6">
+            <AnimatedHeading className="text-fluid-3xl mb-6 text-white">
               Ready to transform your freight operations?
-            </h2>
+            </AnimatedHeading>
             <p className="text-xl text-white/80 mb-8">
               Join the ecosystem of shippers and carriers using AI-powered freight matching
             </p>
@@ -738,7 +738,7 @@ export function Home() {
             </Button>
           </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }
