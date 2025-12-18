@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { fluidRevealTransition, staggeredRevealVariants, revealViewport } from '@/lib/animation';
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -11,13 +12,13 @@ export function AnimatedSection({ children, className = '', delay = 0 }: Animate
   return (
     <motion.section
       className={`content-visibility-auto ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+      variants={staggeredRevealVariants}
       transition={{
-        duration: 0.6,
+        ...fluidRevealTransition,
         delay,
-        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

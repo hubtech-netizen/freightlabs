@@ -1220,6 +1220,320 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont,
 - Introduced content-visibility optimizations
 - Enhanced responsive design system
 
+**v2.1.0** - December 2024
+- Implemented comprehensive Fluid Reveal animation system
+- Created MaskedTextReveal component with overflow-hidden mask animations
+- Added scroll-linked parallax backgrounds (20% scroll speed)
+- Updated all section reveals with custom settling ease curve [0.16, 1, 0.3, 1]
+- Implemented staggered card reveals with 0.1s delays
+- Added viewport triggers at 20% element visibility
+- Integrated parallax scrolling to hero section backgrounds
+
+---
+
+## Fluid Reveal Animation System
+
+### Overview
+The Fluid Reveal system provides smooth, premium entrance animations with a custom "settling" ease curve that creates a natural, physics-based feel inspired by modern design systems.
+
+### Core Animation Settings
+
+#### Custom Ease Curve
+```typescript
+ease: [0.16, 1, 0.3, 1]  // Cubic bezier for settling effect
+duration: 0.8             // 800ms for smooth transitions
+```
+
+This creates a distinctive "settling" motion where elements decelerate smoothly into place.
+
+#### Reveal Variants
+```typescript
+// From animation.ts
+staggeredRevealVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 }
+}
+
+revealViewport = {
+  once: true,      // Animate only once
+  amount: 0.2      // Trigger when 20% visible
+}
+```
+
+### Components
+
+#### MaskedTextReveal
+Wraps headlines with overflow-hidden masks for upward reveal effect:
+
+```tsx
+<MaskedTextReveal className="mb-4" delay={0.2}>
+  <h1 className="text-fluid-4xl font-bold">
+    Your Headline Text
+  </h1>
+</MaskedTextReveal>
+```
+
+**Behavior:**
+- Text starts at `y: 100%` (below mask)
+- Animates to `y: 0` (visible)
+- Combined with opacity fade-in
+- Optional delay parameter for sequencing
+
+**Usage Guidelines:**
+- Main page headlines
+- Section titles
+- Call-to-action text
+- Any text needing dramatic reveal
+
+#### Updated AnimatedSection
+Now uses fluid reveal variants:
+
+```tsx
+<AnimatedSection className="py-24" delay={0}>
+  {/* Section content */}
+</AnimatedSection>
+```
+
+**Changes from v2.0:**
+- Uses `staggeredRevealVariants` (y: 40 instead of y: 20)
+- Custom ease curve [0.16, 1, 0.3, 1]
+- Viewport trigger at 20% (was 10%)
+- Consistent 0.8s duration
+
+#### ParallaxBackground
+Scroll-linked background movements:
+
+```tsx
+<ParallaxBackground speed={0.2}>
+  {/* Background elements */}
+</ParallaxBackground>
+```
+
+**Features:**
+- Default 20% scroll speed (parallax effect)
+- Uses `useScroll` and `useTransform` from Framer Motion
+- GPU-accelerated for smooth 60fps
+- Configurable speed parameter
+
+### Implementation Patterns
+
+#### Staggered Card Reveals
+Cards in grids reveal sequentially with delays:
+
+```tsx
+{items.map((item, index) => (
+  <motion.div
+    key={index}
+    initial="hidden"
+    whileInView="visible"
+    viewport={revealViewport}
+    variants={staggeredRevealVariants}
+    transition={{
+      ...fluidRevealTransition,
+      delay: getStaggerDelay(index)  // 0, 0.1, 0.2, etc.
+    }}
+  >
+    {/* Card content */}
+  </motion.div>
+))}
+```
+
+**Effect:** Cards appear one after another in smooth succession.
+
+#### Hero Section Sequencing
+Multi-element reveals with precise timing:
+
+```tsx
+// Badge: immediate
+<motion.div variants={staggeredRevealVariants} transition={fluidRevealTransition} />
+
+// Headline: 0.2s delay
+<MaskedTextReveal delay={0.2}>
+  <h1>Headline</h1>
+</MaskedTextReveal>
+
+// Description: 0.4s delay
+<motion.p transition={{ ...fluidRevealTransition, delay: 0.4 }}>
+  Description
+</motion.p>
+
+// CTA: 0.6s delay
+<motion.div transition={{ ...fluidRevealTransition, delay: 0.6 }}>
+  <Button>Call to Action</Button>
+</motion.div>
+```
+
+### Scroll-Linked Parallax
+
+#### Background Grid Parallax
+Applied to hero section background patterns:
+
+```tsx
+const { scrollYProgress } = useScroll();
+
+<motion.div
+  style={{
+    y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  }}
+  className="absolute inset-0 bg-[grid-pattern]"
+/>
+```
+
+**Effect:** Background moves at 20% of scroll speed, creating depth.
+
+#### Gradient Blob Parallax
+Animated gradient elements with parallax:
+
+```tsx
+<motion.div
+  style={{
+    ...withGPU(),
+    y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  }}
+  animate={{
+    scale: [1, 1.2, 1],
+    opacity: [0.3, 0.5, 0.3]
+  }}
+  transition={{
+    duration: 8,
+    repeat: Infinity
+  }}
+/>
+```
+
+**Effect:** Combines pulsing animation with parallax scrolling.
+
+### Utility Functions
+
+#### getStaggerDelay
+Calculates sequential delays for staggered reveals:
+
+```typescript
+getStaggerDelay(index: number, baseDelay = 0.1): number
+// index 0 → 0s
+// index 1 → 0.1s
+// index 2 → 0.2s
+```
+
+**Usage:**
+```tsx
+delay: getStaggerDelay(0)     // First item: no delay
+delay: getStaggerDelay(1)     // Second item: 0.1s
+delay: getStaggerDelay(2, 0.15)  // Third item: 0.3s (custom base)
+```
+
+### Animation Constants
+
+From `/src/lib/animation.ts`:
+
+```typescript
+export const fluidRevealTransition = {
+  duration: 0.8,
+  ease: [0.16, 1, 0.3, 1]
+};
+
+export const staggeredRevealVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 }
+};
+
+export const revealViewport = {
+  once: true,
+  amount: 0.2
+};
+```
+
+### Best Practices
+
+#### DO:
+- Use MaskedTextReveal for all major headlines
+- Apply staggered delays to card grids (0.1s increment)
+- Sequence hero section reveals (0.2s increments)
+- Set viewport amount to 0.2 for proper trigger timing
+- Use the custom ease curve [0.16, 1, 0.3, 1]
+- Apply parallax at 20% speed to background elements
+- Keep reveal distance at y: 40 for consistency
+
+#### DON'T:
+- Mix different ease curves (stick to fluid reveal curve)
+- Use y values other than 40 for reveals
+- Set viewport trigger below 0.2 (causes early animations)
+- Apply parallax to foreground content (only backgrounds)
+- Stack multiple masks on same element
+- Use delays longer than 0.8s between elements
+
+### Performance
+
+#### GPU Acceleration
+All reveals use transform properties for hardware acceleration:
+```typescript
+transform: translate3d(0, 0, 0)
+will-change: transform
+```
+
+#### Viewport Optimization
+- `once: true` prevents re-animation on scroll
+- `amount: 0.2` balances early reveal vs. visibility
+- Works with content-visibility for double optimization
+
+#### Mobile Considerations
+- Parallax effects are GPU-accelerated
+- Smooth on 60fps+ displays
+- Battery-efficient implementation
+- No performance impact on low-end devices
+
+### Examples
+
+#### Full Hero Section
+```tsx
+<section>
+  <motion.div variants={staggeredRevealVariants} transition={fluidRevealTransition}>
+    <Badge>New Feature</Badge>
+  </motion.div>
+
+  <MaskedTextReveal delay={0.2}>
+    <h1 className="text-fluid-4xl font-bold">
+      Premium Headline
+    </h1>
+  </MaskedTextReveal>
+
+  <motion.p
+    variants={staggeredRevealVariants}
+    transition={{ ...fluidRevealTransition, delay: 0.4 }}
+  >
+    Supporting description text
+  </motion.p>
+
+  <motion.div
+    variants={staggeredRevealVariants}
+    transition={{ ...fluidRevealTransition, delay: 0.6 }}
+  >
+    <Button>Get Started</Button>
+  </motion.div>
+</section>
+```
+
+#### Staggered Grid
+```tsx
+<div className="grid md:grid-cols-3 gap-8">
+  {features.map((feature, i) => (
+    <motion.div
+      key={i}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+      variants={staggeredRevealVariants}
+      transition={{
+        ...fluidRevealTransition,
+        delay: getStaggerDelay(i)
+      }}
+    >
+      <Card>{feature}</Card>
+    </motion.div>
+  ))}
+</div>
+```
+
 ---
 
 **End of Design System Documentation**

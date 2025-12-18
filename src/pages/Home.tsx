@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { withGPU } from '@/lib/animation';
 import { useEffect, useRef } from 'react';
@@ -6,6 +6,8 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { getCardClasses } from '@/lib/card-styles';
 import { AnimatedSection } from '@/components/shared/AnimatedSection';
 import { AnimatedHeading } from '@/components/shared/AnimatedHeading';
+import { MaskedTextReveal } from '@/components/shared/MaskedTextReveal';
+import { staggeredRevealVariants, fluidRevealTransition, revealViewport, getStaggerDelay } from '@/lib/animation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,6 +41,7 @@ import { Card } from '@/components/ui/card';
 export function Home() {
   const { theme } = useTheme();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     cardRefs.current.forEach((card, index) => {
@@ -74,12 +77,20 @@ export function Home() {
   return (
     <div className="min-h-screen">
       <section className="relative min-h-screen bg-gradient-to-br from-brand-slate-50 via-brand-azure to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
+        <motion.div
+          className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
+          style={{
+            y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%']),
+          }}
+        />
 
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] rounded-full bg-gradient-to-br from-brand-blue/10 to-brand-azure opacity-50 blur-3xl"
-            style={withGPU()}
+            style={{
+              ...withGPU(),
+              y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%']),
+            }}
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
@@ -114,26 +125,46 @@ export function Home() {
                 </span>
               </motion.div>
 
-              <AnimatedHeading as="h1" className="text-fluid-4xl font-bold text-foreground leading-tight">
-                AI-Powered Freight Matching{' '}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-blue-hover to-brand-blue">
-                  That Actually Works
-                </span>
-              </AnimatedHeading>
+              <MaskedTextReveal className="text-fluid-4xl font-bold text-foreground leading-tight" delay={0.2}>
+                <h1>
+                  AI-Powered Freight Matching{' '}
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-blue-hover to-brand-blue">
+                    That Actually Works
+                  </span>
+                </h1>
+              </MaskedTextReveal>
 
-              <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
+              <motion.p
+                className="text-xl text-muted-foreground max-w-xl leading-relaxed"
+                initial="hidden"
+                animate="visible"
+                variants={staggeredRevealVariants}
+                transition={{ ...fluidRevealTransition, delay: 0.4 }}
+              >
                 A unified logistics platform that moves loads faster, smarter, and with total visibility. Get matched capacity in minutes, not hours.
-              </p>
+              </motion.p>
 
-              <div className="flex items-center gap-3 p-4 bg-card border-l-4 border-brand-orange rounded-lg shadow-sm">
+              <motion.div
+                className="flex items-center gap-3 p-4 bg-card border-l-4 border-brand-orange rounded-lg shadow-sm"
+                initial="hidden"
+                animate="visible"
+                variants={staggeredRevealVariants}
+                transition={{ ...fluidRevealTransition, delay: 0.5 }}
+              >
                 <BarChart3 className="w-6 h-6 text-brand-orange flex-shrink-0" />
                 <p className="text-sm font-medium">
                   The industry average for empty miles sits at <span className="font-bold text-foreground">20%</span>. Our automated network targets{' '}
                   <span className="font-bold text-brand-orange">&lt;5%</span>. Stop paying for air.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap gap-4">
+              <motion.div
+                className="flex flex-wrap gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={staggeredRevealVariants}
+                transition={{ ...fluidRevealTransition, delay: 0.6 }}
+              >
                 <Button className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group">
                   Access the Platform
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -144,9 +175,15 @@ export function Home() {
                 >
                   View Our Capabilities
                 </Button>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center gap-8 pt-4">
+              <motion.div
+                className="flex items-center gap-8 pt-4"
+                initial="hidden"
+                animate="visible"
+                variants={staggeredRevealVariants}
+                transition={{ ...fluidRevealTransition, delay: 0.7 }}
+              >
                 <div>
                   <div className="text-3xl font-bold text-foreground">
                     <AnimatedCounter end={10} suffix="k+" />
@@ -167,7 +204,7 @@ export function Home() {
                   </div>
                   <div className="text-sm text-muted-foreground">Match Rate</div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
             <motion.div
@@ -227,9 +264,11 @@ export function Home() {
               <Target className="w-4 h-4 text-brand-blue" />
               <span className="text-sm font-semibold text-brand-blue">Choose Your Path</span>
             </motion.div>
-            <AnimatedHeading className="text-fluid-3xl mb-4">
-              Built for the Backbone of the Supply Chain
-            </AnimatedHeading>
+            <MaskedTextReveal className="mb-4">
+              <h2 className="text-fluid-3xl font-bold">
+                Built for the Backbone of the Supply Chain
+              </h2>
+            </MaskedTextReveal>
             <p className="text-fluid-lg text-muted-foreground">
               Real-world logistics problems require data-driven solutions. Select your operation type to see the metrics that matter.
             </p>
@@ -238,8 +277,12 @@ export function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
             <motion.div
               ref={(el) => (cardRefs.current[0] = el)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              variants={staggeredRevealVariants}
+              transition={{ ...fluidRevealTransition, delay: getStaggerDelay(0) }}
               whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
               style={withGPU()}
               className="will-change-transform"
             >
@@ -293,8 +336,12 @@ export function Home() {
 
             <motion.div
               ref={(el) => (cardRefs.current[1] = el)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              variants={staggeredRevealVariants}
+              transition={{ ...fluidRevealTransition, delay: getStaggerDelay(1) }}
               whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
               style={withGPU()}
               className="will-change-transform"
             >
@@ -352,8 +399,12 @@ export function Home() {
 
             <motion.div
               ref={(el) => (cardRefs.current[2] = el)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={revealViewport}
+              variants={staggeredRevealVariants}
+              transition={{ ...fluidRevealTransition, delay: getStaggerDelay(2) }}
               whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
               style={withGPU()}
               className="will-change-transform"
             >
@@ -433,9 +484,11 @@ export function Home() {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <AnimatedHeading className="text-fluid-3xl">
-                  Dispatch Automation for the Modern Fleet
-                </AnimatedHeading>
+                <MaskedTextReveal>
+                  <h2 className="text-fluid-3xl font-bold">
+                    Dispatch Automation for the Modern Fleet
+                  </h2>
+                </MaskedTextReveal>
                 <p className="text-fluid-lg text-muted-foreground">
                   RouteForge™ automatically finds and books your next load before you finish your current one. No more calling brokers. No more empty miles. Just back-to-back hauls that maximize your revenue per week.
                 </p>
@@ -625,9 +678,11 @@ export function Home() {
                 <Zap className="w-4 h-4 text-brand-orange" />
                 <span className="text-sm font-semibold text-brand-orange">Data Over Opinions</span>
               </div>
-              <AnimatedHeading className="text-fluid-3xl mb-4">
-                Technology Built for the <span className="text-brand-blue">Long Haul</span>
-              </AnimatedHeading>
+              <MaskedTextReveal className="mb-4">
+                <h2 className="text-fluid-3xl font-bold">
+                  Technology Built for the <span className="text-brand-blue">Long Haul</span>
+                </h2>
+              </MaskedTextReveal>
               <p className="text-fluid-lg text-muted-foreground max-w-3xl mx-auto">
                 Trust signals that matter to modern logistics operations
               </p>
