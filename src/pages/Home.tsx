@@ -100,8 +100,8 @@ export function Home() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-10 md:py-12">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
