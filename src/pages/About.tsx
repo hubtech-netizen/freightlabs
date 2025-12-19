@@ -108,7 +108,7 @@ export function About() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 pt-24 pb-16 flex items-center min-h-screen">
+        <div className="relative z-10 container mx-auto px-4 pt-12 pb-16 flex items-center min-h-screen">
           <div className="max-w-4xl mx-auto text-center text-white">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
