@@ -68,24 +68,25 @@ export function About() {
 
   const scientists = [
     {
-      role: 'Chief Experimentation Officer',
-      abbr: 'CXO',
+      name: 'Anand Dawluru',
+      role: 'Chief Executive Officer',
+      abbr: 'CEO',
+      email: 'Anand@freightlabs.io',
       description: 'Leads the strategic vision and experimental direction of FreightLabs.',
     },
     {
-      role: 'Chief Freight Scientist',
-      abbr: 'CFS',
+      name: 'Satya Prashant',
+      role: 'Chief Technology Officer',
+      abbr: 'CTO',
+      email: 'Satya@freightlabs.io',
       description: 'Architects the AI and data systems that power our matching engines.',
     },
     {
-      role: 'Head of Field Experiments',
-      abbr: 'HFE',
+      name: 'Srinu Meetakoti',
+      role: 'Chief Operating Officer',
+      abbr: 'COO',
+      email: 'Srinu@freightlabs.io',
       description: 'Oversees real-world testing and carrier/shipper relationships.',
-    },
-    {
-      role: 'Talent Acquisition Scientist',
-      abbr: 'TAS',
-      description: 'Identifies and recruits the next generation of logistics scientists.',
     },
   ];
 
@@ -107,7 +108,7 @@ export function About() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-32 flex items-center min-h-screen">
+        <div className="relative z-10 container mx-auto px-4 pt-24 pb-16 flex items-center min-h-screen">
           <div className="max-w-4xl mx-auto text-center text-white">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -290,7 +291,7 @@ export function About() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {scientists.map((scientist, index) => (
               <motion.div
                 key={scientist.abbr}
@@ -303,8 +304,15 @@ export function About() {
                   <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-navy to-brand-navy-light flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
                     <span className="text-2xl font-bold text-white">{scientist.abbr}</span>
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{scientist.role}</h3>
-                  <p className="text-sm text-muted-foreground">{scientist.description}</p>
+                  <h3 className="text-xl font-bold mb-1">{scientist.name}</h3>
+                  <p className="text-sm text-brand-blue font-semibold mb-3">{scientist.role}</p>
+                  <p className="text-sm text-muted-foreground mb-3">{scientist.description}</p>
+                  <a href={`mailto:${scientist.email}`} className="text-sm text-brand-blue hover:text-brand-blue-hover transition-colors inline-flex items-center justify-center gap-1">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    {scientist.email}
+                  </a>
                 </Card>
               </motion.div>
             ))}

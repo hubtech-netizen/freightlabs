@@ -107,7 +107,7 @@ export function Home() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-20">
+        <div className="relative z-10 container mx-auto px-4 pt-24 pb-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
