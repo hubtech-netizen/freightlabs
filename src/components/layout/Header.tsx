@@ -51,7 +51,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back.png'}
+              src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back-1.png'}
               alt="FreightLabs Logo"
               className="h-12 w-auto group-hover:scale-105 transition-transform object-contain"
             />

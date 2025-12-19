@@ -12,7 +12,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <img
-                src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back.png'}
+                src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back-1.png'}
                 alt="FreightLabs Logo"
                 className="h-12 w-auto object-contain"
               />
