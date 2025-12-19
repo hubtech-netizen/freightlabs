@@ -204,7 +204,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section id="features" className="py-24 bg-card">
+      <section id="features" className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -313,7 +313,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-brand-azure via-blue-50/50 to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy">
+      <section className="py-12 bg-gradient-to-br from-brand-azure via-blue-50/50 to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -390,7 +390,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -429,7 +429,7 @@ export function LoadForge() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
+      <section className="py-12 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

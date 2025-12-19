@@ -163,7 +163,7 @@ export function About() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-slate-50 dark:from-brand-navy to-transparent" />
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
+      <section className="py-12 bg-gradient-to-b from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -220,13 +220,13 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/10 border border-brand-orange/20 mb-6">
               <Atom className="w-4 h-4 text-brand-orange" />
@@ -268,7 +268,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-brand-slate-50 to-brand-azure dark:from-brand-navy dark:to-brand-navy-light">
+      <section className="py-12 bg-gradient-to-br from-brand-slate-50 to-brand-azure dark:from-brand-navy dark:to-brand-navy-light">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -312,7 +312,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -354,7 +354,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
+      <section className="py-12 bg-gradient-to-br from-brand-slate-50 to-white dark:from-brand-navy dark:to-brand-navy-light">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

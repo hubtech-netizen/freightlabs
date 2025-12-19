@@ -241,13 +241,13 @@ export function RouteForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 mb-6">
               <Brain className="w-4 h-4" />
@@ -290,7 +290,7 @@ export function RouteForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-green-50 via-emerald-50/50 to-white dark:from-green-950/20 dark:via-emerald-950/10 dark:to-brand-navy">
+      <section className="py-12 bg-gradient-to-br from-green-50 via-emerald-50/50 to-white dark:from-green-950/20 dark:via-emerald-950/10 dark:to-brand-navy">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +340,7 @@ export function RouteForge() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -379,7 +379,7 @@ export function RouteForge() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-600">
+      <section className="py-12 bg-gradient-to-r from-green-600 to-emerald-600">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -265,9 +265,9 @@ export function Home() {
         </div>
       </section>
 
-      <AnimatedSection className="py-24 bg-card">
+      <AnimatedSection className="py-12 bg-card">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -299,7 +299,7 @@ export function Home() {
               style={withGPU()}
               className="will-change-transform"
             >
-              <Card className="p-6 lg:p-8 h-full border-2 hover:border-green-500 transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-green-500 transition-all hover:shadow-xl group relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-500/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-green-500/20">
                   <Truck className="w-7 h-7 text-white" />
@@ -310,7 +310,7 @@ export function Home() {
                   The average carrier burns <span className="font-bold text-foreground">15 hours a week</span>{' '}
                   just searching load boards. That is lost time and lost money.
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-6 flex-grow">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
@@ -358,7 +358,7 @@ export function Home() {
               style={withGPU()}
               className="will-change-transform"
             >
-              <Card className="p-6 lg:p-8 h-full border-2 hover:border-brand-blue transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-brand-blue transition-all hover:shadow-xl group relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-blue/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-blue to-brand-blue-hover flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-brand-blue/20">
                   <Package className="w-7 h-7 text-white" />
@@ -369,7 +369,7 @@ export function Home() {
                   Manual freight matching adds{' '}
                   <span className="font-bold text-foreground">12-18% operational overhead</span> to every shipment you move.
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-6 flex-grow">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5" />
                     <div>
@@ -421,7 +421,7 @@ export function Home() {
               style={withGPU()}
               className="will-change-transform"
             >
-              <Card className="p-6 lg:p-8 h-full border-2 hover:border-amber-500 transition-all hover:shadow-xl group relative overflow-hidden">
+              <Card className="p-6 lg:p-8 h-full border-2 hover:border-amber-500 transition-all hover:shadow-xl group relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-bl-full" />
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-amber-500/20">
                   <Building2 className="w-7 h-7 text-white" />
@@ -431,7 +431,7 @@ export function Home() {
                 <p className="text-muted-foreground mb-6">
                   Administrative tasks and check-calls consume <span className="font-bold text-foreground">40% of a broker&apos;s day</span>.
                 </p>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-6 flex-grow">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                     <div>
@@ -475,7 +475,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
+      <AnimatedSection className="py-12 bg-gradient-to-br from-brand-slate-50 via-green-50/30 to-emerald-50/50 dark:from-brand-navy dark:via-green-950/20 dark:to-emerald-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -577,7 +577,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-24 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
+      <AnimatedSection className="py-12 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-blue-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -689,7 +689,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-24 bg-card">
+      <AnimatedSection className="py-12 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -796,7 +796,7 @@ export function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-20 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
+      <AnimatedSection className="py-12 bg-gradient-to-r from-brand-blue to-brand-blue-hover">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
