@@ -35,7 +35,7 @@ export function LoadForge() {
   const [modalSource, setModalSource] = useState('loadforge_page');
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
@@ -51,7 +51,7 @@ export function LoadForge() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-10 md:py-12">
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}

@@ -87,7 +87,7 @@ export function RouteForge() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen bg-gradient-to-br from-green-50 via-emerald-50/50 to-teal-50/30 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-50 via-emerald-50/50 to-teal-50/30 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98110_1px,transparent_1px),linear-gradient(to_bottom,#10b98110_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
@@ -103,7 +103,7 @@ export function RouteForge() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-10 md:py-12">
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}

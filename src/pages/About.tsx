@@ -92,7 +92,7 @@ export function About() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
