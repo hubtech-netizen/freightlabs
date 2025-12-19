@@ -124,13 +124,13 @@ export function Footer() {
           <div>
             <p className="text-xs font-medium text-muted-foreground/60 uppercase tracking-wider mb-3">Email</p>
             <a
-              href="mailto:info@FreightLabs.io"
+              href="mailto:hello@freightlabs.io"
               className="flex items-center gap-2 text-sm text-foreground hover:text-brand-blue transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-brand-azure dark:bg-brand-navy-light flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Mail className="w-4 h-4 text-brand-blue" />
               </div>
-              info@FreightLabs.io
+              hello@FreightLabs.io
             </a>
           </div>
 
