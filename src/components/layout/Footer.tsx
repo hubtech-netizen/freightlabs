@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export function Footer() {
+  const { theme } = useTheme();
+
   return (
     <footer className="relative z-20 bg-gradient-to-b from-card to-background border-t border-border/50">
       <div className="container mx-auto px-4 py-16">
@@ -9,9 +12,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <img
-                src="/freightlabs-no_background.png"
+                src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back.png'}
                 alt="FreightLabs Logo"
-                className="h-12 w-auto"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-xs">

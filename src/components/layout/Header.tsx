@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu, X, Phone, Mail, ArrowRight, ChevronDown } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,6 +12,7 @@ export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const location = useLocation();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,9 +50,9 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/freightlabs-no_background.png"
+              src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back.png'}
               alt="FreightLabs Logo"
-              className="h-12 w-auto group-hover:scale-105 transition-transform"
+              className="h-12 w-auto group-hover:scale-105 transition-transform object-contain"
             />
           </Link>
 
