@@ -14,7 +14,7 @@ export function Footer() {
               <img
                 src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back-1.png'}
                 alt="FreightLabs Logo"
-                className="h-12 w-auto object-contain"
+                className="h-16 lg:h-20 w-auto object-contain"
               />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-xs">

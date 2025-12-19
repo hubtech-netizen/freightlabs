@@ -48,37 +48,34 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={theme === 'light' ? '/logo-white-back.png' : '/logo-dark-back-1.png'}
               alt="FreightLabs Logo"
-              className="h-12 w-auto group-hover:scale-105 transition-transform object-contain"
+              className="h-16 lg:h-20 w-auto group-hover:scale-105 transition-transform object-contain"
             />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
-                  location.pathname === link.path
-                    ? 'text-brand-blue'
-                    : 'text-foreground hover:text-brand-blue'
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
+                location.pathname === '/'
+                  ? 'text-brand-blue'
+                  : 'text-foreground hover:text-brand-blue'
+              }`}
+            >
+              <motion.div
+                className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                  location.pathname === '/'
+                    ? 'bg-brand-blue/10 opacity-100'
+                    : 'bg-brand-blue/0 opacity-0 hover:opacity-100'
                 }`}
-              >
-                <motion.div
-                  className={`absolute inset-0 rounded-lg transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? 'bg-brand-blue/10 opacity-100'
-                      : 'bg-brand-blue/0 opacity-0 hover:opacity-100'
-                  }`}
-                  layoutId="navBg"
-                />
-                <span className="relative z-10">{link.label}</span>
-              </Link>
-            ))}
+                layoutId="navBg"
+              />
+              <span className="relative z-10">Platform</span>
+            </Link>
 
             <div className="relative group">
               <button
@@ -134,6 +131,44 @@ export function Header() {
                 ))}
               </motion.div>
             </div>
+
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
+                location.pathname === '/about'
+                  ? 'text-brand-blue'
+                  : 'text-foreground hover:text-brand-blue'
+              }`}
+            >
+              <motion.div
+                className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                  location.pathname === '/about'
+                    ? 'bg-brand-blue/10 opacity-100'
+                    : 'bg-brand-blue/0 opacity-0 hover:opacity-100'
+                }`}
+                layoutId="navBg3"
+              />
+              <span className="relative z-10">Our Mission</span>
+            </Link>
+
+            <Link
+              to="/contact"
+              className={`text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
+                location.pathname === '/contact'
+                  ? 'text-brand-blue'
+                  : 'text-foreground hover:text-brand-blue'
+              }`}
+            >
+              <motion.div
+                className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                  location.pathname === '/contact'
+                    ? 'bg-brand-blue/10 opacity-100'
+                    : 'bg-brand-blue/0 opacity-0 hover:opacity-100'
+                }`}
+                layoutId="navBg4"
+              />
+              <span className="relative z-10">Talk to an Expert</span>
+            </Link>
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
@@ -168,30 +203,27 @@ export function Header() {
             className="lg:hidden border-t border-border/40 backdrop-blur-xl bg-background/80"
           >
             <nav className="flex flex-col py-6 space-y-1 px-4">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.2 }}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0, duration: 0.2 }}
+              >
+                <Link
+                  to="/"
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                    location.pathname === '/'
+                      ? 'bg-brand-blue/10 text-brand-blue'
+                      : 'text-foreground hover:bg-brand-blue/5 hover:text-brand-blue hover:translate-x-1'
+                  }`}
                 >
-                  <Link
-                    to={link.path}
-                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
-                      location.pathname === link.path
-                        ? 'bg-brand-blue/10 text-brand-blue'
-                        : 'text-foreground hover:bg-brand-blue/5 hover:text-brand-blue hover:translate-x-1'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
+                  Platform
+                </Link>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05, duration: 0.2 }}
+                transition={{ delay: 0.05, duration: 0.2 }}
               >
                 <button
                   onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
@@ -225,6 +257,40 @@ export function Header() {
                     ))}
                   </motion.div>
                 )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1, duration: 0.2 }}
+              >
+                <Link
+                  to="/about"
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                    location.pathname === '/about'
+                      ? 'bg-brand-blue/10 text-brand-blue'
+                      : 'text-foreground hover:bg-brand-blue/5 hover:text-brand-blue hover:translate-x-1'
+                  }`}
+                >
+                  Our Mission
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15, duration: 0.2 }}
+              >
+                <Link
+                  to="/contact"
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                    location.pathname === '/contact'
+                      ? 'bg-brand-blue/10 text-brand-blue'
+                      : 'text-foreground hover:bg-brand-blue/5 hover:text-brand-blue hover:translate-x-1'
+                  }`}
+                >
+                  Talk to an Expert
+                </Link>
               </motion.div>
 
               <motion.div
