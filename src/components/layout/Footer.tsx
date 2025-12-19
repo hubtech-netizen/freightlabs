@@ -69,7 +69,7 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/contact" className="text-sm text-muted-foreground hover:text-brand-blue transition-colors inline-flex items-center gap-1 group">
-                  Get Started
+                  Talk to an Expert
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>

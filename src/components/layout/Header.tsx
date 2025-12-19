@@ -31,6 +31,7 @@ export function Header() {
   const navLinks = [
     { path: '/', label: 'Platform' },
     { path: '/about', label: 'Our Mission' },
+    { path: '/contact', label: 'Talk to an Expert' },
   ];
 
   const solutionsLinks = [
