@@ -97,15 +97,6 @@ export function Home() {
               ...withGPU(),
               y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%']),
             }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
           />
         </div>
 
@@ -234,9 +225,9 @@ export function Home() {
                   <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50" />
 
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="absolute w-64 h-64 border border-brand-blue/20 rounded-full animate-pulse" />
-                    <div className="absolute w-48 h-48 border border-brand-blue/30 rounded-full animate-pulse delay-150" />
-                    <div className="absolute w-32 h-32 border border-brand-blue/40 rounded-full animate-pulse delay-300" />
+                    <div className="absolute w-64 h-64 border border-brand-blue/20 rounded-full" />
+                    <div className="absolute w-48 h-48 border border-brand-blue/30 rounded-full" />
+                    <div className="absolute w-32 h-32 border border-brand-blue/40 rounded-full" />
                   </div>
 
                   <div className="relative z-10 text-center">
