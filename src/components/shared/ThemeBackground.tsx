@@ -116,8 +116,8 @@ export function ThemeBackground() {
       className="fixed inset-0 pointer-events-none z-0 transition-transform duration-200 ease-out will-change-transform"
       style={{
         backgroundImage: `
-          linear-gradient(to right, #F2F2F2 1px, transparent 1px),
-          linear-gradient(to bottom, #F2F2F2 1px, transparent 1px)
+          linear-gradient(to right, rgba(242, 242, 242, 0.15) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(242, 242, 242, 0.15) 1px, transparent 1px)
         `,
         backgroundSize: '40px 40px',
         ...withGPU(),
