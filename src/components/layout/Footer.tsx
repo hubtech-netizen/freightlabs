@@ -38,7 +38,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wide">Products</h4>
+            <h4 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wide">Solutions</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/routeforge" className="text-sm text-muted-foreground hover:text-brand-blue transition-colors inline-flex items-center gap-1 group">
@@ -60,13 +60,13 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-brand-blue transition-colors inline-flex items-center gap-1 group">
-                  The Lab (About)
+                  Our Mission
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-sm text-muted-foreground hover:text-brand-blue transition-colors inline-flex items-center gap-1 group">
-                  Contact
+                  Get Started
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
