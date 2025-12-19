@@ -86,7 +86,7 @@ export function About() {
       role: 'Chief Operating Officer',
       abbr: 'COO',
       email: 'Srinu@freightlabs.io',
-      description: 'Oversees FreightLabs, fusing advanced tech with operational excellence and carrier-shipper synergy.',
+      description: 'Powering FreightLabs through tech-driven operations and carrier-shipper synergy.',
     },
   ];
 
