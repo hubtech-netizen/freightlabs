@@ -84,7 +84,7 @@ export function Home() {
     <div className="min-h-screen">
       <section className="relative bg-gradient-to-br from-brand-slate-50 via-brand-azure to-white dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
         <motion.div
-          className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]"
+          className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)]"
           style={{
             y: useTransform(scrollYProgress, [0, 0.5], ['0%', '20%']),
           }}
