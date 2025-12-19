@@ -33,12 +33,18 @@ export function ContactModal({ isOpen, onClose, defaultInterest = 'general', sou
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
-      document.body.style.position = 'relative';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = '0';
+      document.body.style.left = '0';
     } else {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
       document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
     }
 
     return () => {
@@ -46,6 +52,9 @@ export function ContactModal({ isOpen, onClose, defaultInterest = 'general', sou
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
       document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
     };
   }, [isOpen]);
 
@@ -138,17 +147,17 @@ export function ContactModal({ isOpen, onClose, defaultInterest = 'general', sou
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9998]"
             aria-hidden="true"
           />
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-y-auto pointer-events-none">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-hidden pointer-events-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', duration: 0.5 }}
-              className="w-full max-w-2xl my-8 relative pointer-events-auto"
+              className="w-full max-w-2xl h-[90vh] relative pointer-events-auto flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <Card className="relative bg-card border-2 shadow-2xl max-h-[90vh] flex flex-col">
-                <div className="sticky top-0 z-20 flex justify-end p-4 bg-card/98 backdrop-blur-sm border-b border-border/40 flex-shrink-0">
+              <Card className="relative bg-card border-2 shadow-2xl flex flex-col h-full overflow-hidden">
+                <div className="flex justify-end p-4 bg-card/98 backdrop-blur-sm border-b border-border/40 flex-shrink-0">
                   <Button
                     variant="ghost"
                     size="icon"
@@ -160,7 +169,7 @@ export function ContactModal({ isOpen, onClose, defaultInterest = 'general', sou
                   </Button>
                 </div>
 
-                <div className="p-8 pt-4 overflow-y-auto flex-1">
+                <div className="p-8 pt-4 overflow-y-auto flex-1 overscroll-contain">
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
