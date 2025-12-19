@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ScrollToTop } from '@/components/ScrollToTop';
 import { Layout } from '@/components/layout/Layout';
 import { Home } from '@/pages/Home';
 import { RouteForge } from '@/pages/RouteForge';
@@ -12,6 +13,7 @@ function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
