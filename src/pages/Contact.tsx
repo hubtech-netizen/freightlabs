@@ -86,7 +86,7 @@ export function Contact() {
   return (
     <div className="min-h-screen">
       <section className="relative py-12 bg-gradient-to-br from-brand-slate-50 via-brand-azure to-blue-50/50 dark:from-brand-navy dark:via-brand-navy-light dark:to-brand-navy overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f601_1px,transparent_1px),linear-gradient(to_bottom,#3b82f601_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f608_1px,transparent_1px),linear-gradient(to_bottom,#3b82f608_1px,transparent_1px)] bg-[size:24px_24px]" />
 
         <div className="absolute inset-0 overflow-hidden">
           <motion.div

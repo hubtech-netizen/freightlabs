@@ -36,7 +36,7 @@ export function LoadForge() {
   return (
     <div className="min-h-screen">
       <section className="relative bg-gradient-to-br from-brand-azure via-blue-50/50 to-indigo-50/30 dark:from-brand-navy dark:via-blue-950/30 dark:to-indigo-950/20 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f601_1px,transparent_1px),linear-gradient(to_bottom,#3b82f601_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
