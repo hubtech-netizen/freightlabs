@@ -75,7 +75,7 @@ export function About() {
       description: 'Leads the strategic vision and experimental direction of FreightLabs.',
     },
     {
-      name: 'Satya Prashant',
+      name: 'Satya Bade',
       role: 'Chief Technology Officer',
       abbr: 'CTO',
       email: 'Satya@freightlabs.io',
