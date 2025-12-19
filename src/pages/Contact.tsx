@@ -191,8 +191,8 @@ export function Contact() {
                   <Mail className="w-7 h-7 text-brand-blue" />
                 </div>
                 <h3 className="font-bold text-lg mb-3">Email Us</h3>
-                <a href="mailto:info@FreightLabs.io" className="text-sm font-semibold text-brand-blue hover:text-brand-blue-hover transition-colors block mb-4">
-                  info@FreightLabs.io
+                <a href="mailto:hello@FreightLabs.io" className="text-sm font-semibold text-brand-blue hover:text-brand-blue-hover transition-colors block mb-4">
+                  hello@FreightLabs.io
                 </a>
                 <p className="text-xs text-muted-foreground">
                   Response time: 2-4 hours
