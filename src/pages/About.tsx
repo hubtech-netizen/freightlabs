@@ -68,7 +68,7 @@ export function About() {
 
   const scientists = [
     {
-      name: 'Anand Dawluru',
+      name: 'Anand',
       role: 'Chief Executive Officer',
       abbr: 'CEO',
       email: 'Anand@freightlabs.io',
